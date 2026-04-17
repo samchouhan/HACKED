@@ -29,7 +29,7 @@ def generate_ip():
 # main
 print(Fore.GREEN + "\n[ SYSTEM BOOTING... ]\n")
 
-target = input(Fore.GREEN + "Enter target system: ")
+target = input(Fore.YELLOW + "Enter target system: ")
 
 time.sleep(1)
 type_text(f"\nTarget locked: {target}")
