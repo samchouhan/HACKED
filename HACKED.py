@@ -19,3 +19,16 @@ def loading(text, duration=3):
             sys.stdout.flush()
             time.sleep(0.5)
         sys.stdout.write("\r" + " " * 50 + "\r")
+
+# main program
+target = input("Enter target system: ")
+
+print("\nInitializing hack...\n")
+time.sleep(1)
+
+type_text(f"Connecting to {target} server...")
+time.sleep(1)
+
+loading("Bypassing firewall")
+loading("Decrypting passwords")
+loading("Accessing secure files")
