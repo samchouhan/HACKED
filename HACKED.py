@@ -32,3 +32,15 @@ time.sleep(1)
 loading("Bypassing firewall")
 loading("Decrypting passwords")
 loading("Accessing secure files")
+
+# random success/failure
+if random.choice([True, False]):
+    type_text("ACCESS GRANTED ✅", 0.05)
+    type_text("Downloading data...", 0.04)
+    time.sleep(2)
+    type_text("Download complete 💾")
+else:
+    type_text("ACCESS DENIED ❌", 0.05)
+    type_text("Trace detected! Disconnecting...", 0.04)
+
+print("\nOperation finished.")
