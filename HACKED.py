@@ -1,46 +1,51 @@
 import time
 import sys
 import random
+from colorama import Fore, Style, init
+
+init()
 
 # typing effect
 def type_text(text, speed=0.03):
     for char in text:
-        sys.stdout.write(char)
+        sys.stdout.write(Fore.GREEN + char)
         sys.stdout.flush()
         time.sleep(speed)
+    print(Style.RESET_ALL)
+
+# loading animation
+def loading(text):
+    type_text(text)
+    for i in range(3):
+        sys.stdout.write(Fore.GREEN + ".")
+        sys.stdout.flush()
+        time.sleep(0.5)
     print()
 
-# fake loading dots
-def loading(text, duration=3):
-    type_text(text)
-    for _ in range(duration):
-        for dot in "...":
-            sys.stdout.write(dot)
-            sys.stdout.flush()
-            time.sleep(0.5)
-        sys.stdout.write("\r" + " " * 50 + "\r")
+# random IP generator
+def generate_ip():
+    return ".".join(str(random.randint(0,255)) for _ in range(4))
 
-# main program
-target = input("Enter target system: ")
+# main
+print(Fore.GREEN + "\n[ SYSTEM BOOTING... ]\n")
 
-print("\nInitializing hack...\n")
+target = input(Fore.GREEN + "Enter target system: ")
+
 time.sleep(1)
+type_text(f"\nTarget locked: {target}")
+type_text(f"IP Address: {generate_ip()}")
 
-type_text(f"Connecting to {target} server...")
-time.sleep(1)
-
+loading("Connecting to server")
 loading("Bypassing firewall")
-loading("Decrypting passwords")
-loading("Accessing secure files")
+loading("Decrypting data")
 
-# random success/failure
 if random.choice([True, False]):
     type_text("ACCESS GRANTED ✅", 0.05)
-    type_text("Downloading data...", 0.04)
-    time.sleep(2)
+    loading("Downloading files")
     type_text("Download complete 💾")
 else:
     type_text("ACCESS DENIED ❌", 0.05)
-    type_text("Trace detected! Disconnecting...", 0.04)
+    type_text("TRACE DETECTED ⚠️")
+    type_text("Disconnecting...")
 
-print("\nOperation finished.")
+print(Fore.RED + "\n[ SESSION TERMINATED ]")
